@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FilePond demo</title>
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <style type="text/css">
+    .main {
+        width: 40%;
+        margin: 50px auto;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <input type="file" class="filepond" name="filepond" multiple data-allow-reorder="true" data-max-file-size="8192MB" data-max-files="50">
+    </div>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script>
+    // Select the file input and use 
+    // create() to turn it into a pond
+    FilePond.create(
+        document.querySelector('input'),
+
+    )
+    var BASE_URL = document.location.origin;
+
+    FilePond.setOptions({
+        server: {
+            url: BASE_URL + '/app/api/filepond/',
+            process: './process',
+            revert: './revert',
+            restore: './restore/',
+            load: './load/',
+            fetch: './fetch/'
+        }
+    });
+    </script>
+</body>
+
+</html>
