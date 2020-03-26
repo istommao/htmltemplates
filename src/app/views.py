@@ -6,6 +6,10 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 
+def index_view(request):
+    return render(request, 'index.html')
+
+
 def filepond_view(request):
     return render(request, 'filepond.html')
 
